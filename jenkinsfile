@@ -1,0 +1,16 @@
+pipeline {
+    agent { label 'Any' }
+    stages{
+        stage("Cleanup Workspace"){
+                steps {
+                cleanWs()
+                }
+        }
+
+        stage("Checkout from SCM"){
+                steps {
+                    git branch: 'main', credentialsId: 'jenkins', url: 'https://github.com/Ramachandra9/terraform.git'
+                }
+        }
+    }
+}
